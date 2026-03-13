@@ -2,29 +2,33 @@ import java.util.*;
 
 public class pallindromeapp {
     static void main() {
-        String input = "racecar";
+        String input = "Level";
 
-        PalindromeService service = new PalindromeService();
+        // Start time
+        long startTime = System.nanoTime();
 
-        boolean result = service.checkPalindrome(input);
+        boolean isPalindrome = checkPalindrome(input);
+
+        // End time
+        long endTime = System.nanoTime();
+
+        long executionTime = endTime - startTime;
 
         System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + result);
+        System.out.println("Is Palindrome? : " + isPalindrome);
+        System.out.println("Execution Time : " + executionTime + " ns");
     }
-}
 
-class PalindromeService {
+    public static boolean checkPalindrome(String input) {
 
-    public boolean checkPalindrome(String input) {
+        String normalized = input.toLowerCase();
 
-        // Initialize pointers
         int start = 0;
-        int end = input.length() - 1;
+        int end = normalized.length() - 1;
 
-        // Compare characters moving inward
         while (start < end) {
 
-            if (input.charAt(start) != input.charAt(end)) {
+            if (normalized.charAt(start) != normalized.charAt(end)) {
                 return false;
             }
 
