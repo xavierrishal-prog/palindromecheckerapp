@@ -1,23 +1,18 @@
 import java.util.*;
 
-public class PalindromeCheckerApp {
+public class pallindromeapp {
+    static void main() {
+        String input = "A man a plan a canal Panama";
 
-    public static void main(String[] args) {
-
-        String input = "level";
-        LinkedList<Character> list = new LinkedList<>();
-
-        for (char c : input.toCharArray()) {
-            list.add(c);
-        }
+        // Normalize the string
+        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
         boolean isPalindrome = true;
 
-        while (list.size() > 1) {
-            char first = list.removeFirst();
-            char last = list.removeLast();
+        // Compare characters from both ends
+        for (int i = 0; i < normalized.length() / 2; i++) {
 
-            if (first != last) {
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
                 isPalindrome = false;
                 break;
             }
