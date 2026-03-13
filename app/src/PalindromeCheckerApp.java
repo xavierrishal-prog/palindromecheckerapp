@@ -1,23 +1,29 @@
-import java.util.Deque;
-import java.util.ArrayDeque;
+import java.util.*;
 
-public class PalindromeCheckerApp {
-    public static void main(String[] args){
-        String input = "refer";
-        Deque<Character> deque = new ArrayDeque<>();
-        for (char c : input.toCharArray()) {
-            deque.addLast(c);
-        }
-        boolean isPalindrome = true;
-        while (deque.size() > 1) {
-            char first = deque.removeFirst();
-            char last = deque.removeLast();
-            if (first != last) {
-                isPalindrome = false;
-                break;
-            }
-        }
+public class pallindromeapp {
+    static void main() {
+        String input = "madam";
+
+        boolean result = check(input, 0, input.length() - 1);
+
         System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+        System.out.println("Is Palindrome? : " + result);
+    }
+
+    // Recursive method to check palindrome
+    private static boolean check(String s, int start, int end) {
+
+        // Base condition
+        if (start >= end) {
+            return true;
+        }
+
+        // If characters don't match
+        if (s.charAt(start) != s.charAt(end)) {
+            return false;
+        }
+
+        // Recursive call
+        return check(s, start + 1, end - 1);
     }
 }
